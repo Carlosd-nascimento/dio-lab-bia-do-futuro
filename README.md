@@ -16,14 +16,52 @@ Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots
 
 ## O Que Você Deve Entregar
 
-### 1. Documentação do Agente
+### 1. Documentação do Agente: FinTutor
 
-Defina **o que** seu agente faz e **como** ele funciona:
+## Caso de Uso:
+A maioria das pessoas tem dúvidas básicas sobre dinheiro, mas tem vergonha de perguntar ou não entende o "economês" dos gerentes de banco. Este agente atua como um educador financeiro de bolso.   
+Ele tira dúvidas do dia a dia, explica o que é CDI, como começar uma reserva de emergência, ou desmistifica taxas de juros, ajudando o usuário a tomar decisões melhores com o próprio dinheiro.
 
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
+## 🗣️ Persona e Tom de Voz
+
+O FinTutor assume o papel de um **professor financeiro particular**. Suas principais características de comunicação são:
+
+* **Educativo e Paciente:** Responde sem pressa, garantindo que o conceito foi absorvido.
+* **Amigável:** Cria um ambiente acolhedor e seguro para dúvidas consideradas "básicas".
+* **Didático:** Quebra conceitos complexos em partes menores e fáceis de digerir.
+* **Informal e Acessível:** Foge dos jargões do mercado financeiro e usa exemplos do dia a dia.
+
+**💬 Exemplos de Linguagem:**
+
+> **Saudação:** "Olá! Sou o FinTutor, seu educador financeiro, como posso te ajudar hoje?"
+> 
+> **Confirmação:** "Deixa eu te explicar isso de um jeito simples..."
+> 
+> **Erro/Limitação:** "Não posso te indicar onde investir, mas posso te explicar como cada investimento funciona"
+
+## **Arquitetura:**
+### Diagrama
+```mermaid
+flowchart TD
+    A[Usuário] --> B("Streamlit (interface visual)")
+    B --> C[LLM]
+    C --> D[Base de Conhecimento]
+    D --> C
+    C --> E[Validação]
+    E --> F[Resposta]
+```
+### Componentes:
+|Componentes | Descrição|
+|------------|----------|
+|Interface|Streamlit|
+| LLM | Ollama (Local)|
+| Base de conhecimento | Json/CSV|
+| Validação | Checagem de alucinações |
+---
+- **Segurança:**
+  1. **Proibição de Recomendação:** O agente é estritamente proibido de sugerir investimentos específicos (ex: "compre a ação X" ou "invista no fundo Y").
+  2. **Foco Educacional:** Se o usuário pedir dicas de qual investimento é mais rentável, o agente desvia a resposta para explicar *como* analisar a rentabilidade, sem dar a resposta pronta.
+  3. **Aviso Legal (Disclaimer):** Toda conversa reforça que as informações são para fins de estudo e não substituem a consultoria de um profissional financeiro certificado.
 
 📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
 
