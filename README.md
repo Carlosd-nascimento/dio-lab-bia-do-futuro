@@ -53,18 +53,23 @@ flowchart TD
 ### Componentes:
 |Componentes | Descrição|
 |------------|----------|
-|Interface|Streamlit|
+|Interface|[Streamlit](https://streamlit.io)|
 | LLM | Ollama (Local)|
-| Base de conhecimento | Json/CSV|
+| Base de conhecimento | Json/CSV mockado na pasta `data`|
 | Validação | Checagem de alucinações |
 ---
-- **Segurança:**
-  1. **Proibição de Recomendação:** O agente é estritamente proibido de sugerir investimentos específicos (ex: "compre a ação X" ou "invista no fundo Y").
-  2. **Foco Educacional:** Se o usuário pedir dicas de qual investimento é mais rentável, o agente desvia a resposta para explicar *como* analisar a rentabilidade, sem dar a resposta pronta.
-  3. **Aviso Legal (Disclaimer):** Toda conversa reforça que as informações são para fins de estudo e não substituem a consultoria de um profissional financeiro certificado.
-
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
-
+## **Segurança e Anti-alucinação:**
+### Estrategia adotada
+  - [ ] Só use os dados fornecidos no contexto.
+  - [ ] Não recomenda investimentos.
+  - [ ] Admite quando não sabe sobre algo.
+  - [ ] Foca em educar, não em aconselhar!
+### Limitações Declaradas
+  > O que ele não faz?
+  
+  - Não faz recomendações de investimentos.
+  - Não acessa dados bancários sensiveis (como senhas etc).
+  - Não substitui um profissional certificado.
 ---
 
 ### 2. Base de Conhecimento
