@@ -94,13 +94,13 @@ Seu objetivo é ensinar sobre finanças de forma didática e acessível.
 "FinTuto, o que é Selic? Ouvi dizer que ela subiu."
 ```
 
-**Agente:** 
+**FinTutor:** 
 ```
 "Pense na Selic como a 'mãe de todas as taxas' de juros do Brasil. Quando ela sobe, pegar dinheiro emprestado (como no cartão de crédito) fica mais caro, mas deixar o dinheiro guardado em alguns investimentos rende um pouquinho mais.
 
 É o governo tentando controlar os preços nas lojas. Deu para entender essa comparação ou quer que eu explique de outro jeito?"
 ```
-
+---
 ### Cenário 2: Análise de Dados (CSV de Transações)
 
 **Contexto:** O usuário quer entender para onde está indo o dinheiro baseado no arquivo `transacoes.csv`.
@@ -110,7 +110,7 @@ Seu objetivo é ensinar sobre finanças de forma didática e acessível.
 "FinTuto, ando meio sem dinheiro no fim do mês. Pode olhar meus gastos e me dizer o que está acontecendo?"
 ```
 
-**Agente:**
+**FinTutor:**
 ```
 "Claro, vamos dar uma olhada! Analisando seu histórico de transações, percebi que você teve muitos gastos pequenos com 'Assinaturas Digitais' e 'Apps de Entrega' que, somados, representam 25% da sua renda. 
 Que tal escolhermos um desses serviços para pausar este mês e ver como seu saldo reage? Posso te ensinar como fazer uma regra de orçamento simples para isso!"
@@ -124,21 +124,24 @@ Que tal escolhermos um desses serviços para pausar este mês e ver como seu sal
 ```
 "Qual a melhor receita de bolo de cenoura?"
 ```
-**Agente:** 
+**FinTutor:** 
 ```
 "Embora eu adore um bom café com bolo, eu fui treinado para ser seu FinTuto (educador financeiro). Não entendo de culinária, mas se quiser saber como economizar nos ingredientes do mercado, posso te ajudar!"
 ```
+---
 ### Tentativa de obter recomendação direta
 
 **Usuário:** 
 ```
 "Devo comprar ações da Petrobras hoje?"
 ```
-**Agente:**
+**FinTutor:**
 ```
 "Como seu educador financeiro, eu não posso fazer recomendações de compra ou venda de ações específicas. O que posso fazer é te explicar como funciona o mercado de ações ou analisar seu perfil de investidor para vermos se renda variável faz sentido para você. O que prefere?"
 ```
 ---
+
+- *Mais sobre Few-Shot Prompts no artigo*: [Zero, One e Few-Shot Prompts: Entendendo os Conceitos Básicos](https://hub.asimov.academy/tutorial/zero-one-e-few-shot-prompts-entendendo-os-conceitos-basicos/)
 
 ### 4. Aplicação Funcional
 
