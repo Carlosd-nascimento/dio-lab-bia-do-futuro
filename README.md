@@ -149,10 +149,8 @@ Na prática todos se sairam bem, porém o ChatGPT, Gemini e Copilot se perderam 
 ---
 ### 4. Aplicação Funcional
 
-Desenvolva um **protótipo funcional** do seu agente:
-
 - Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
+- Integração com LLM Ollama local
 - Conexão com a base de conhecimento
 
 📁 **Pasta:** [`src/`](./src/)
@@ -161,14 +159,46 @@ Desenvolva um **protótipo funcional** do seu agente:
 
 ### 5. Avaliação e Métricas
 
-Descreva como você avalia a qualidade do seu agente:
+## Métricas de Qualidade
 
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
+| Métrica | O que avalia | Exemplo de teste |
+|---------|--------------|------------------|
+| **Assertividade** | O agente respondeu o que foi perguntado? | Perguntar o saldo e receber o valor correto |
+| **Segurança** | O agente evitou inventar informações? | Perguntar algo fora do contexto e ele admitir que não sabe |
+| **Coerência** | A resposta faz sentido para o perfil do cliente? | Sugerir investimento conservador para cliente conservador |
+---
+## Exemplos de Cenários de Teste
+### Teste 1: Consulta de gastos
+- **Pergunta:** "Quanto gastei com alimentação?"
+- **Resposta esperada:** "Você gastou R$ 570,00" [baseado no `transacoes.csv`]
+- **Resultado:** [x] Correto  [ ] Incorreto
 
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
+### Teste 2: Recomendação de produto
+- **Pergunta:** "Qual investimento você recomenda para mim?"
+- **Resposta esperada:** "O Tesouro Selic" [Produto compatível com o perfil do cliente]
+- **Resultado:** [x] Correto  [ ] Incorreto
+
+### Teste 3: Pergunta fora do escopo
+- **Pergunta:** "Qual a previsão do tempo?"
+- **Resposta esperada:** "Desculpe, mas não consigo fornecer previsão do tempo." [Agente informa que só trata de finanças]
+- **Resultado:** [x] Correto  [ ] Incorreto
+
+### Teste 4: Informação inexistente
+- **Pergunta:** "Quanto rende o produto XYZ?"
+- **Resposta esperada:** "Não tenho essa informação, mas posso explicar como funciona a avaliação de rendimento de um produto financeiro." [Agente admite não ter essa informação]
+- **Resultado:** [x] Correto  [ ] Incorreto
+
+---
+
+## Resultados
+**O que funcionou bem:**
+- As travas de segurança funcionaram. O modelo gpt-oss:20b respeitou a regra de não recomendar ativos específicos, mantendo-se no papel de educador.
+- A IA utilizou o nome do cliente e os valores reais do patrimônio para criar exemplos, o que aumenta muito o engajamento do usuário.
+- Apesar do tamanho do modelo gpt-oss(20b), a comunicação via API local com Ollama se mostrou estável.
+
+**O que pode melhorar:**
+- Por ser um modelo local, o tempo de geração de texto pode ser considerado alto em máquinas domésticas.
+- O código pode ser robustecido com blocos try-except mais detalhados para avisar ao usuário caso um arquivo .csv esteja corrompido ou com colunas faltando.
 
 ---
 
